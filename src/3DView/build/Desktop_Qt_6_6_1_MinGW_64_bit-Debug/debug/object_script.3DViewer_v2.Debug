@@ -1,0 +1,16 @@
+debug/dgif_lib.o
+debug/egif_lib.o
+debug/gif_err.o
+debug/gif_hash.o
+debug/gifalloc.o
+debug/quantize.o
+debug/qgifimage.o
+debug/affine.o
+debug/facade.o
+debug/parser.o
+debug/glview.o
+debug/main.o
+debug/mainwindow.o
+debug/record_media.o
+debug/moc_mainwindow.o
+debug/moc_record_media.o
