@@ -10,10 +10,11 @@
 #include <QMenuBar>
 #include <QMessageBox>
 #include <QSettings>
+#include <QSlider>
+#include <QDoubleSpinBox>
 
 #include "view/glview.h"
 #include "view/record_media.h"
-
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -36,6 +37,9 @@ class MainWindow : public QMainWindow {
   QSettings *myGlSettings;
   RecordMedia myMedia;
   int flag = 0;
+  void configureSlider(QSlider* s, int min, int max);
+  void configureSpinBox(QDoubleSpinBox* sb, double min, double max, double step);
+
  private slots:
   void open_file();
   void onSliderLinesValueChanged(int value);
