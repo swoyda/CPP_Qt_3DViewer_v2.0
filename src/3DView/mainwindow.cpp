@@ -8,26 +8,16 @@ MainWindow::MainWindow(QWidget *parent)
   myGlSettings = new QSettings("S21", "3DViewer", this);
   loadSettings();
 
-  ui->linesThiknessSlider->setMinimum(1);
-  ui->linesThiknessSlider->setMaximum(10);
+  configureSlider(ui->scaleSlider, 1, 200);
 
-  ui->verticesThiknessSlider->setMinimum(1);
-  ui->verticesThiknessSlider->setMaximum(20);
+  configureSlider(ui->linesThiknessSlider, 1, 10);
 
-  ui->scaleSlider->setMinimum(1);
-  ui->scaleSlider->setMaximum(200);
+  configureSlider(ui->verticesThiknessSlider, 1, 20);
 
-  ui->moveXDoubleSpinBox->setSingleStep(0.01);
-  ui->moveYDoubleSpinBox->setSingleStep(0.01);
-  ui->moveZDoubleSpinBox->setSingleStep(0.01);
+  configureSpinBox(ui->moveXDoubleSpinBox, -100, 100, 0.01);
+  configureSpinBox(ui->moveYDoubleSpinBox, -100, 100, 0.01);
+  configureSpinBox(ui->moveZDoubleSpinBox, -100, 100, 0.01);
 
-  ui->moveXDoubleSpinBox->setMinimum(-100);
-  ui->moveYDoubleSpinBox->setMinimum(-100);
-  ui->moveZDoubleSpinBox->setMinimum(-100);
-
-  ui->moveXDoubleSpinBox->setMaximum(100);
-  ui->moveYDoubleSpinBox->setMaximum(100);
-  ui->moveZDoubleSpinBox->setMaximum(100);
   create_menu();
   connect_buttons_signals();
 }
@@ -183,6 +173,17 @@ void MainWindow::saveSettings() {
   myGlSettings->setValue("linestype", ui->myglwidget->getlinesType());
   myGlSettings->setValue("linewidth", ui->myglwidget->getlineWidth());
   myGlSettings->setValue("verticeswidth", ui->myglwidget->getverticesWidth());
+}
+
+void MainWindow::configureSlider(QSlider* s, int min, int max) {
+    s->setMinimum(min);
+    s->setMaximum(max);
+}
+
+void MainWindow::configureSpinBox(QDoubleSpinBox* sb, double min, double max, double step) {
+    sb->setMinimum(min);
+    sb->setMaximum(max);
+    sb->setSingleStep(step);
 }
 void MainWindow::loadSettings() {
   QVariant backgoundSettings =
